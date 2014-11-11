@@ -239,7 +239,7 @@ html, body {
 .form-control{
 	background-color: #9ba238;
 }
-.container{max-width:100%;
+.container{
 		overflow-x:hidden;
 		height: 100%;
 }

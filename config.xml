@@ -22,18 +22,11 @@
     <preference name="fullscreen"       value="false" />
     <preference name="show-splash-screen-spinner" value="true" />
     <icon src="icon.png" />
-    <icon src="res/icon/android/icon-36-ldpi.png"   gap:platform="android"    gap:density="ldpi" />
-    <icon src="res/icon/android/icon-48-mdpi.png"   gap:platform="android"    gap:density="mdpi" />
-    <icon src="res/icon/android/icon-72-hdpi.png"   gap:platform="android"    gap:density="hdpi" />
-    <icon src="res/icon/android/icon-96-xhdpi.png"  gap:platform="android"    gap:density="xhdpi" />
+    <icon src="images/icon-36-ldpi.png"   gap:platform="android"    gap:density="ldpi" />
+    <icon src="images/icon-48-mdpi.png"   gap:platform="android"    gap:density="mdpi" />
+    <icon src="images/icon-72-hdpi.png"   gap:platform="android"    gap:density="hdpi" />
+    <icon src="images/icon-96-xhdpi.png"  gap:platform="android"    gap:density="xhdpi" />
 	
-    
 
-    <!--
-    <gap:splash src="res/screen/android/icon-36-ldpi.png"  gap:platform="android" gap:density="ldpi" />
-    <gap:splash src="res/screen/android/icon-48-mdpi"  gap:platform="android" gap:density="mdpi" />
-    <gap:splash src="res/screen/android/icon-72-hdpi.png"  gap:platform="android" gap:density="hdpi" />
-    <gap:splash src="res/screen/android/icon-96-xhdpi.png" gap:platform="android" gap:density="xhdpi" />
-	-->
     
 </widget>

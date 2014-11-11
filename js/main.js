@@ -4,7 +4,16 @@ $(document).ready(function(e){
       
 	  
 	   $('#gatewaycont').css('height',$('#gateway').height()+'px');
-	   
+	   $('.registerbtn').click(function(e) {
+		   var year=$('.yearpicker').val();
+		   if(year=='YYYY') alert('Select Year of Birth');
+		   else if(parseInt(new Date().getFullYear())-parseInt(year)<18){
+			   alert('You are not of regal drinking age');
+		   }else{
+			  $('.registerhidden').click(); 
+		   }
+       
+       });
 	   $('.shoppingcart--').on('click', function(e){
 		 
 		   $('.loader').fadeIn();

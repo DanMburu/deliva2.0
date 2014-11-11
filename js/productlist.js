@@ -83,7 +83,7 @@ function getproducts_success(tx, results) {
 }
 
 function checkRegistration(tx) {
-	tx.executeSql('DROP TABLE IF EXISTS customer');
+	//tx.executeSql('DROP TABLE IF EXISTS customer');
 	var sql = 
 		"CREATE TABLE IF NOT EXISTS customer ( "+
 		"cid INTEGER PRIMARY KEY AUTOINCREMENT, " +

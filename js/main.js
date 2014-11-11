@@ -3,6 +3,8 @@ $(document).ready(function(e){
   // $("#results").html('');
       
 	  
+	   $('#gatewaycont').css('height',$('#gateway').height()+'px');
+	   
 	   $('.shoppingcart--').on('click', function(e){
 		 
 		   $('.loader').fadeIn();

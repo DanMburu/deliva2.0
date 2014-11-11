@@ -213,9 +213,26 @@ hr{
 .ui-dialog .ui-corner-all, .ui-corner-bottom, .ui-corner-right, .ui-corner-br {
   border-bottom-right-radius: 0 !important;
 }
-.ui-dialog {
-  border: none !important;
-  
+body .ui-dialog {
+border: 1px solid rgb(102, 102, 102) !important;
+padding: 0px;
+background: rgb(102, 102, 102) !important;
 }
 #gateway,#register{top:auto !important}
 #gateway .contentholder{border:none;}
+.ui-dialog .ui-dialog-titlebar-close span {
+top: -4px;
+position: relative;
+background-position: -93px -125px;
+background-repeat: no-repeat !important;
+width: 23px;
+height: 23px;
+border-radius: 16px;
+}
+html, body {
+        height: 100%;
+        margin: 0px;
+    }
+.form-control{
+	background-color: #9ba238;
+}

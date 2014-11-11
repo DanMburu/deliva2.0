@@ -106,7 +106,7 @@ function checkRegistration(tx) {
 		 }
 	},
 	function(error){     // On error                              
-		 alert('Sorry an error occured.');
+		// alert('Sorry an error occured.');
 		 console.log(error);
 		 $('#top').hide();
 			$('.lnkgateway').click(); 

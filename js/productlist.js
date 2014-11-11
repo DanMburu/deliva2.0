@@ -5,6 +5,25 @@ var uuid;
 var value;
 //var scroll = new iScroll('wrapper', { vScrollbar: false, hScrollbar:false, hScroll: false });
 
+//SAMPLE
+/*
+db.transaction(function(transaction) {
+	transaction.executeSql("select * from tbl_cart", [],
+	function(tx, result) {
+		 var len = result.rows.length;
+		 var cartItems='';
+		  for (var i=0; i<len; i++) {
+			  var prod = result.rows.item(i);
+			   console.log(prod);
+		 }
+	},
+	function(error){     // On error                              
+		 alert('Error occurred while deleting the business data.');
+	});	
+
+});
+
+*/
 document.addEventListener("deviceready", onDeviceReady, false);
 
 function onDeviceReady() {
@@ -71,10 +90,29 @@ function checkRegistration(tx) {
 		"registered INTEGER(20))";
 	   tx.executeSql(sql);	
        
-	   var sql = "select * from customer where id=:id ";
-	   tx.executeSql(sql, [1], check_success);
+	  // var sql = "select * from customer where id=? ";
+	  // tx.executeSql(sql, [1], check_success);
 	  //tx.executeSql(sql, check_success);
-	
+	db.transaction(function(transaction) {
+	transaction.executeSql("select * from customer", [],
+	function(tx, result) {
+		 var len = result.rows.length;
+		 if(len==0){
+			$('#top').hide();
+			$('.lnkgateway').click(); 
+		 }else{
+			 $('#top').slideDown();
+			  //$('#page').slideDown(5000);
+		 }
+	},
+	function(error){     // On error                              
+		 alert('Sorry an error occured.');
+		 console.log(error);
+		 $('#top').hide();
+			$('.lnkgateway').click(); 
+	});	
+
+});
 	
 	
 }
@@ -82,16 +120,7 @@ function registration_error(tx, error) {
     alert("Database Error: " + error);
 }
 
-function check_success(tx, results) {
-	 var len = results.rows.length;
-	 if(len==0){
-		$('#top').hide();
-		$('.lnkgateway').click(); 
-	 }else{
-		 $('#top').slideDown();
-		  //$('#page').slideDown(5000);
-	 }
-}
+
 $(document).ready(function(e) {
     $('#frmRegister').submit(function(e) {
 	db.transaction(register, transaction_error)

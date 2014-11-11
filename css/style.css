@@ -217,4 +217,5 @@ hr{
   border: none !important;
   
 }
-
+#gateway,#register{top:auto !important}
+#gateway .contentholder{border:none;}

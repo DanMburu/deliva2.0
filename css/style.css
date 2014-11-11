@@ -188,6 +188,8 @@ top: 205px !important;
 header{clear: left;
 float: left;
 width: 100%;
+position:relative;
+left:0;
 }
 hr{
 	clear:left;

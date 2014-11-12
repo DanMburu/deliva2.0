@@ -245,7 +245,7 @@ html, body {
 		overflow-x:hidden;
 		height: 100%;
 }
-.ui-dialog .ui-dialog-titlebar-close {
+body .ui-dialog .ui-dialog-titlebar-close {
 position: absolute;
 right: 12px;
 top: 50%;

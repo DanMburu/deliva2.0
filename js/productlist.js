@@ -203,7 +203,7 @@ function getCart(tx) {
 								total += parseFloat(prod.prod_price) * parseFloat(prod.quantity);
 							}//END FOR
 							data += "<tr><td></td><td></td><td><strong>Total</strong></td><td><strong>Ksh "+total+"</strong></td></tr></table>";
-							data += "<div class='pull-right'><a  href='#' class='btn btn-primary lnkcheckout'>Checkout t</a>";
+							data += "<div class='pull-right'><a  href='#' class='btn btn-primary lnkcheckout'>Checkout</a>";
                             $('.amountdue').text('Ksh ' +total);
 					   }else{
                               data = "<p>Your cart is empty</p>";

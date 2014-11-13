@@ -59,7 +59,12 @@ $(document).ready(function(e){
 	     $.get( url, function( data ) {
 			$("#reviewscont").html(data);
 			$('.overlay').fadeOut();
-		});
+		}).fail(function() {
+			alert( "Check your internet connection." );
+			})
+			.always(function() {
+			$('.overlay').fadeOut();
+		  });
 	 });
 	   $('#reviewfrm').submit(function(e) {
 		var count=0;
@@ -79,7 +84,12 @@ $(document).ready(function(e){
 			 $('#Dialog1').html('Review submited');
 		      $('#DialogTrigger').click();
 			  $('.overlay').fadeOut();
-			});
+			}).fail(function() {
+			alert( "Check your internet connection." );
+			})
+			.always(function() {
+			$('.overlay').fadeOut();
+		  });
 			   
 		}
 	     return false;
@@ -103,10 +113,15 @@ $(document).ready(function(e){
 		$('.overlay').fadeIn();
         var url=$('#rooturl').val()+'cart.aspx?option=register&'+$("#frmRegister" ).serialize();
 		$.get( url, function( data ) {
-	     $('#top').show();
-		 $('.overlay').fadeOut();
-		 $('.home').click();
-		});
+				 $('#top').show();
+				 $('.home').click();
+			}) .fail(function() {
+			alert( "Check your internet connection." );
+			})
+			.always(function() {
+			$('.overlay').fadeOut();
+		  });
+		
 		}
 	     return false;
 		e.preventDefault();

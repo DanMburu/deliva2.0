@@ -143,6 +143,7 @@ $(document).ready(function(e) {
 	
 		$('#btnpayment').on('click',function(){
 		 var url=$('#rooturl').val()+'cart.aspx?option=save&'+$("#frmcheckout" ).serialize()+'&'+$("#frmpayments" ).serialize();
+		 $('.overlay').fadeIn();
 		 $.get( url, function( data ) {
 		   $('.btnthankyou').click();
 		    $("#frmcheckout").trigger('reset');
@@ -154,14 +155,18 @@ $(document).ready(function(e) {
 			// Define delete query
 			var executeQuery = "Delete FROM tbl_cart";
 			transaction.executeSql(executeQuery, []
-				, function(tx, result) {  //On Success 
-				  $('#lnkcheckout').click();
+				, function(tx, result) {  //On Success 				
 				  $('.overlay').fadeOut();
 				});
 			 });
 			 //::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 			$("#results").html('<p>Your cart is empty</p>');
-		});
+		}).fail(function() {
+			alert( "Check your internet connection." );
+			})
+			.always(function() {
+			$('.overlay').fadeOut();
+		  });
 	});
 });
 function addtocart(tx) {
@@ -206,7 +211,7 @@ function getCart(tx) {
 								 var cartItems='';
 								  for (var i=0; i<len; i++) {
 									  var prod = result.rows.item(i);
-								       console.log(prod);
+								       //console.log(prod);
 								  }
 				});
 				});
@@ -273,7 +278,13 @@ function getCart(tx) {
 							 
 								$.get( url, function( data ) {
 									$('body').append(data);
-								});
+									$('#lnkcheckout').click();
+								}).fail(function() {
+								alert( "Check your internet connection." );
+								})
+								.always(function() {
+								$('.overlay').fadeOut();
+							  });
 		
 		
 							},
@@ -353,7 +364,7 @@ function populateDB(tx) {
 		"product_image VARCHAR(50), " +
 		"product_desc VARCHAR(20))";
     tx.executeSql(sql);
-	console.log(sql);
+	//console.log(sql);
     tx.executeSql("INSERT INTO products (product_id,cat_id,product_name,product_icon,product_image,product_desc) VALUES (1,1,'Bells','bells.jpg','img-bell.png','<p>Up to 40 of the finest malt and grain whiskies are matured in oak casks before being skilfully blended to give Bell''s Blended Scotch Whisky its rich nose, warm taste and lingering finish.</p><p><strong>Variants:</strong> Bell''s Original, Bell''s Special Reserve (GB market only), and Bell''s Decanter which is produced each year. </p><p><strong>Fact:</strong> The now famous Bell''s Decanters are collectable. They were first produced in the 1930s and since 1988 a decanter has been produced each Christmas. </p>')");
     tx.executeSql("INSERT INTO products (product_id,cat_id,product_name,product_icon,product_image,product_desc) VALUES (2,1,'Ciroc','Ciroc.jpg','the-ciroc.jpg','<p>Cîroc vodka is the world''s most sophisticated vodka. Made exclusively from top-quality Mauzac Blanc and Ugni Blanc grapes for an exquisitely smooth, fresh and innovative vodka experience. Cîroc vodka uses cold maceration, cold fermentation and cold storage and is distilled five times over.</p><p>Fact: Cîroc comes from a combination of two French words: cime, meaning peak and roche meaning rock. This evokes the Gaillac region which is one of the highest wine growing regions in France.</p> ')");
     tx.executeSql("INSERT INTO products (product_id,cat_id,product_name,product_icon,product_image,product_desc) VALUES (3,1,'Johnnie Walker Blue','johnwarker.jpg','sample.jpg','<p>The world''s leading Scotch Whisky brand and most valuable premium spirit brand according to Impact Databank, Johnnie Walker Blended Scotch Whisky was one of the first truly global brands. In 1920, 100 years after origination, the brand was distributed in 120 countries. Today it is found in almost 200 countries. Six bottles of Johnnie Walker Blended Scotch Whisky are sold every second.</p><p><strong>Fact:</strong> Johnnie Walker Scotch Whisky has been winning international quality awards since 1879.</p>')");

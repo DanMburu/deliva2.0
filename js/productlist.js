@@ -78,6 +78,9 @@ function getproducts_success(tx, results) {
 	 $('.product_id').val(id);
 	 db.transaction(getProduct, transaction_error);
 	 db.transaction(getProdDetails, transaction_error);
+	 
+	 $('.tab-description').click();
+	 $('#reviewscont').html('');
 			
  });	
  

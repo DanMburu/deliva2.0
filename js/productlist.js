@@ -141,7 +141,28 @@ $(document).ready(function(e) {
 		db.transaction(getCart, transaction_error);
 	});//shoppingcart
 	
-	
+		$('#btnpayment').on('click',function(){
+		 var url=$('#rooturl').val()+'cart.aspx?option=save&'+$("#frmcheckout" ).serialize()+'&'+$("#frmpayments" ).serialize();
+		 $.get( url, function( data ) {
+		   $('.btnthankyou').click();
+		    $("#frmcheckout").trigger('reset');
+		    $("#frmpayments").trigger('reset');
+			// EMPTY THE CART
+			//::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+			db.transaction(
+			function(transaction) {
+			// Define delete query
+			var executeQuery = "Delete FROM tbl_cart";
+			transaction.executeSql(executeQuery, []
+				, function(tx, result) {  //On Success 
+				  $('#lnkcheckout').click();
+				  $('.overlay').fadeOut();
+				});
+			 });
+			 //::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+			$("#results").html('<p>Your cart is empty</p>');
+		});
+	});
 });
 function addtocart(tx) {
 	//tx.executeSql('DROP TABLE IF EXISTS tbl_cart');	
@@ -252,20 +273,6 @@ function getCart(tx) {
 							 
 								$.get( url, function( data ) {
 									$('body').append(data);
-									// EMPTY THE CART
-									//::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-									db.transaction(
-									function(transaction) {
-									// Define delete query
-									var executeQuery = "Delete FROM tbl_cart";
-									transaction.executeSql(executeQuery, []
-										, function(tx, result) {  //On Success 
-										  $('#lnkcheckout').click();
-								          $('.overlay').fadeOut();
-										});
-								     });
-								     //::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-									
 								});
 		
 		

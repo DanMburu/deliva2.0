@@ -88,15 +88,7 @@ $(document).ready(function(e){
 	   
 	  
 	 
-	$('#btnpayment').on('click',function(){
-		 var url=$('#rooturl').val()+'cart.aspx?option=save&'+$("#frmcheckout" ).serialize()+'&'+$("#frmpayments" ).serialize();
-		 $.get( url, function( data ) {
-		   $('.btnthankyou').click();
-		    $("#frmcheckout").trigger('reset');
-		    $("#frmpayments").trigger('reset');
-			$("#results").html('<p>Your cart is empty</p>');
-		});
-	});
+
 	$('#frmRegister').submit(function(e) {
 		var count=0;
 		$('#frmRegister .required').each(function() {

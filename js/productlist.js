@@ -75,6 +75,7 @@ function getproducts_success(tx, results) {
     }
  $('.lnkProduct').on('click', function(e){
 	 id=$(this).attr('id');
+	 $('.product_id').val(id);
 	 db.transaction(getProduct, transaction_error);
 	 db.transaction(getProdDetails, transaction_error);
 			
@@ -129,7 +130,9 @@ $(document).ready(function(e) {
 	$('#button-cart').on('click', function() {
 		db.transaction(addtocart, transaction_error);
 	}); //button-cart
-	
+	$('.exit').on('click', function() {
+		navigator.app.exitApp();
+	});
 	$('.shoppingcart').click(function( event ) {
 		event.preventDefault();
 		db.transaction(getCart, transaction_error);
@@ -147,7 +150,7 @@ function addtocart(tx) {
 		"quantity INTEGER)";
     tx.executeSql(sql);
 	var qty=$('#input-quantity').val();
-	var prodId=$('#product_id').val();
+	var prodId=$('.product_id').val();
 	var option_id=$('input[name="option_id"]:checked').val();
    
 	//alert(sql);
@@ -388,7 +391,7 @@ function getProduct_success(tx, results) {
 	var products = results.rows.item(0);
 	$('#tab-description').html(products.product_desc);
 	$('#prodname').html(products.product_name);
-	$('#product_id').val(products.pid);
+	$('.product_id').val(products.pid);
 	
 	$('#thumb').attr('src','img/'+products.product_image);
 	

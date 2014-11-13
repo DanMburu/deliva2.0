@@ -52,6 +52,42 @@ $(document).ready(function(e){
 	     return false;
 		e.preventDefault();
        });
+	   
+	   $('.lnkreview').on('click',function(){
+		 $('.overlay').fadeIn(); 
+	     var url=$('#rooturl').val()+'reviews.aspx?option=get&product_id='+$('.product_id').val();
+	     $.get( url, function( data ) {
+			$("#reviewscont").html(data);
+			$('.overlay').fadeOut();
+		});
+	 });
+	   $('#reviewfrm').submit(function(e) {
+		var count=0;
+		$('#reviewfrm .required').each(function() {
+		 if ($(this).val() == ""){
+			 count++;
+		  }});
+
+		if(count>0){
+			alert('Enter your review.');
+		}else{
+			$('.overlay').fadeIn();
+            var url=$('#rooturl').val()+'reviews.aspx?option=save&cust_id='+uuid+'&'+$("#reviewfrm" ).serialize();
+			$.get( url, function( data ) {
+			$('#reviewscont').html(data);
+			$('#txtReviews').val('');
+			 $('#Dialog1').html('Review submited');
+		      $('#DialogTrigger').click();
+			  $('.overlay').fadeOut();
+			});
+			   
+		}
+	     return false;
+		e.preventDefault();
+       });
+	   
+	  
+	 
 	$('#btnpayment').on('click',function(){
 		 var url=$('#rooturl').val()+'cart.aspx?option=save&'+$("#frmcheckout" ).serialize()+'&'+$("#frmpayments" ).serialize();
 		 $.get( url, function( data ) {

@@ -254,3 +254,45 @@ margin: -10px 0 0 0;
 padding: 1px;
 height: 23px;
 }
+#reviewfrm textarea.ui-input-text{
+	height:85px;
+}
+#reviewfrm input[type=radio] {
+margin-right: 10px;
+float: left;
+}
+#reviewfrm label {
+margin-right: 10px;
+margin-top: -1px;
+float: left;
+}
+.nav-tabs {
+margin-bottom: 15px;
+margin-top: 14px;
+float: left;
+width: 100%;
+}
+#tab-review fieldset{
+	width:100%;
+}
+.ulReviews {
+margin: 0;
+padding: 0px;
+padding-left: 3px;
+}
+.ulReviews li {
+list-style: none;
+border-bottom: 1px solid #999;
+padding-top: 10px;
+}
+.ulReviews li:first-child {
+	padding-top: 0px;
+}
+.ulReviews label{
+	font-size:13px;
+	font-style:italic;
+	color:#999;
+}
+.ulReviews p{
+	font-size:14px;
+}

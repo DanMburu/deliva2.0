@@ -115,7 +115,7 @@
                                         Qty
                                     </label>
                                     <input name="quantity" data-role="none" value="1" size="2" id="input-quantity" class="form-control" type="text">
-                                    <input name="product_id" id="product_id" value="" type="hidden">
+                                    <input name="product_id" class="product_id" value="" type="hidden">
                                     <input name="cust_id" id="customer_id" class="cust_id"  value="" type="hidden">
                                     <br>
                                     <button type="button" data-role="none"  id="button-cart" data-loading-text="Loading..." class="btn btn-primary btn-lg btn-block">
@@ -130,7 +130,7 @@
                                         <a href="#tab-description" data-toggle="tab">Description</a>
                                     </li>
                                     <li>
-                                        <a href="#tab-review" data-toggle="tab">Reviews (0)</a>
+                                        <a href="#tab-review" class="lnkreview" data-toggle="tab">Reviews</a>
                                     </li>
                                 </ul>
                             
@@ -138,8 +138,37 @@
                                 <div class="tab-pane active" id="tab-description">
                                     tab-description
                                 </div>
-                                 <div class="tab-pane active" id="tab-review">
-                                    <p>Currently being implemented.</p>
+                                 <div class="tab-pane" id="tab-review">
+                                 <fieldset data-role="none">
+                                       <legend>Product Review</legend>
+                                     <div id="reviewscont"></div>  
+                                  </fieldset>
+                                 <form id="reviewfrm">
+                                   <div data-role="fieldcontain">
+                                    
+                                      <fieldset data-role="none">
+                                       <legend>Your Review</legend>
+                                     <textarea class="required" cols="40" rows="8" name="review" id="txtReviews"></textarea>
+                                      </fieldset>
+                                   </div>
+                                   <div data-role="fieldcontain">
+                                     <fieldset data-role="none">
+                                       <legend>Rating</legend>
+                                       <label>Bad</label>
+                                       <input type="radio" data-role="none" name="ratings" id="ratings_0" value="1" />
+                                       <input type="radio" data-role="none" name="ratings" id="ratings_1" value="2" />
+                                       <input type="radio" data-role="none" name="ratings" id="ratings_2" value="3" />
+                                       <input type="radio" data-role="none" name="ratings" id="ratings_3" value="4" />
+                                       <input type="radio" data-role="none" name="ratings" id="ratings_4" value="5" checked />
+                                       <label>Good</label>
+                                     </fieldset>
+                                   </div>
+                                    <div class='pull-right'>
+                                    <input type="hidden" name="product_id" class="product_id" />
+                                      <input type="submit" id="btnsubmitreview" value="Submit!" class='btn btn-primary' />
+                                      </div>
+                                   </form>
+                                    
                                 </div>
                             </div>
                         </div>

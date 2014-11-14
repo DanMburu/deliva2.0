@@ -105,10 +105,13 @@ $(document).ready(function(e){
 		 if ($(this).val() == ""){
 			 count++;
 		  }});
-
+        
 		if(count>0){
 			alert('All fields are required.');
-		}else{
+		}
+		else if(!validateEmail())
+		alert('Enter a valid email address.');
+		else{
 		
 		$('.overlay').fadeIn();
         var url=$('#rooturl').val()+'cart.aspx?option=register&'+$("#frmRegister" ).serialize();
@@ -146,11 +149,25 @@ $(document).ready(function(e){
 		e.preventDefault();
        });
 	 
-
-	
-
+$('.number').on('keypress',function(e) { 
+	if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+	//display error message
+	$("#errmsg").html("Digits Only").show().fadeOut("slow");
+	return false;
+}
 });
 
+
+});
+function validateEmail(sEmail) {
+    var filter = /^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
+    if (filter.test(sEmail)) {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
 function load(url){	
 	//$("#results").fadeOut(100);
 	$('.overlay').show();

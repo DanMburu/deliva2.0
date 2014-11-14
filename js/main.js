@@ -137,6 +137,9 @@ $(document).ready(function(e){
 		if(count>0){
 			alert('All fields are required.');
 		}else{
+			window.localStorage.contactperson=$('#contactperson').val();
+			window.localStorage.contactphone=$('#contactphone').val();
+			window.localStorage.address=$('#address').val();
           $('#btnshipping').click();
 		}
 	     return false;

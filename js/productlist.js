@@ -3,6 +3,7 @@ var dbCreated = false;
 var id;
 var uuid;
 var value;
+
 //var scroll = new iScroll('wrapper', { vScrollbar: false, hScrollbar:false, hScroll: false });
 
 //SAMPLE
@@ -134,8 +135,25 @@ $(document).ready(function(e) {
 		db.transaction(addtocart, transaction_error);
 	}); //button-cart
 	$('.exit').on('click', function() {
-		navigator.app.exitApp();
+		
+		/*navigator.notification.alert(
+			'You are the winner!',  // message
+			'Game Over',            // title
+			'Done'                  // buttonName
+		);
+		navigator.notification.confirm(
+			'You are the winner!', // message
+			 test,            // callback to invoke with index of button pressed
+			'Game Over',           // title
+			['Restart','Exit']     // buttonLabels
+		);*/
+		 if (confirm('Close the Application?')) {
+		    navigator.app.exitApp();
+		 }
 	});
+	function test(){
+		
+	}
 	$('.shoppingcart').click(function( event ) {
 		event.preventDefault();
 		db.transaction(getCart, transaction_error);
@@ -278,7 +296,11 @@ function getCart(tx) {
 							 
 								$.get( url, function( data ) {
 									$('body').append(data);
-									$('#lnkcheckout').click();
+									$('#contactperson').val(window.localStorage.contactperson);
+									$('#contactphone').val(window.localStorage.contactphone);
+									$('#address').val(window.localStorage.address);
+								
+								$('#lnkcheckout').click();
 								}).fail(function() {
 								alert( "Check your internet connection." );
 								})

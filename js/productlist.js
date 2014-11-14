@@ -277,6 +277,7 @@ function getCart(tx) {
 						// END BUTTON EVENTS
 						
 						$('.number').on('keypress',function(e) { 
+						alert('here');
 							if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
 							//display error message
 							$("#errmsg").html("Digits Only").show().fadeOut("slow");

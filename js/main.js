@@ -109,7 +109,7 @@ $(document).ready(function(e){
 		if(count>0){
 			alert('All fields are required.');
 		}
-		else if(!validateEmail())
+		else if(!validateEmail($('#textinput5').val()))
 		alert('Enter a valid email address.');
 		else{
 		

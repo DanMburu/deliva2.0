@@ -245,7 +245,7 @@ function getCart(tx) {
 						  	for (var i=0; i<len; i++) {
 								var prod = result.rows.item(i);
 								//console.log(prod);
-								data += "<tr><td>" + prod.product_name + "<br><small>Size: " + prod.prod_capacity + "</small></td> <td><input data-role='none' class='formcontrol' type='text' value='" + prod.quantity + "' name='option'" + prod.cid + " /> ";
+								data += "<tr><td>" + prod.product_name + "<br><small>Size: " + prod.prod_capacity + "</small></td> <td><input data-role='none'  class='formcontrol number' type='number' value='" + prod.quantity + "' name='option'" + prod.cid + " /> ";
 								data += "<span class='input-group-btn'><button rel='" + prod.cid + "'  class='btnupdate btn btn-primary' title='Update' data-toggle='tooltip' type='button'><i class='fa fa-refresh'></i></button>";
 								data += "<button  rel='" + prod.cid + "' class='btndelete btn btn-danger' title='Remove' data-toggle='tooltip' type='button'><i class='fa fa-times-circle'></i></button></span>";
 								data += "</td> <td>" + prod.prod_price + "</td> <td>" + parseFloat(prod.prod_price) * parseFloat(prod.quantity) + "</td></tr>";
@@ -275,6 +275,14 @@ function getCart(tx) {
 							db.transaction(updateCart, transaction_error);
 						 });//.btnupdate
 						// END BUTTON EVENTS
+						
+						$('.number').on('keypress',function(e) { 
+							if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+							//display error message
+							$("#errmsg").html("Digits Only").show().fadeOut("slow");
+							return false;
+						}
+						});
 						
 						$('.lnkcheckout').on('click', function (e) {
 							$('.overlay').fadeIn();

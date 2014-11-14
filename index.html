@@ -183,6 +183,7 @@
 		 <div id="results" class="row"></div>
 	</div>
 </div>
+
 <div data-role="page" id="checkout">
 	<div data-role="content">
     <h2>Shipping Details</h2>
@@ -193,7 +194,7 @@
       </div>
 	  <div data-role="fieldcontain">
 	    <label for="textinput2">Contact Phone:</label>
-	    <input type="text" name="contactphone" id="contactphone" value=""  class='required' />
+	    <input type="tel" pattern="[0-9]*" name="contactphone" id="contactphone" value=""  class='required' />
       </div>
 	  <div data-role="fieldcontain">
 	    <label for="textarea">Address Description:</label>
